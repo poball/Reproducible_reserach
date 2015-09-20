@@ -23,7 +23,7 @@ average_activity <- aggregate(x=list(steps=data$steps), by=list(interval=data$in
 ggplot(data=average_activity, aes(x=interval, y=steps)) +
     geom_line() +
     xlab("5-minute interval") +
-    ylab("average number of steps taken")
+    ylab("average number of steps")
 ```
 
 On average across all the days in the dataset, the 5-minute interval contains
@@ -77,7 +77,7 @@ values with the mean `steps` of associated `interval` value, the 0 values are re
 this part, we use the dataset with the filled-in values.
 
 ```{r}
-weekday.or.weekend <- function(date) {
+weekday_weekend <- function(date) {
     day <- weekdays(date)
     if (day %in% c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"))
         return("weekday")
@@ -87,7 +87,7 @@ weekday.or.weekend <- function(date) {
         stop("invalid date")
 }
 filled.data$date <- as.Date(filled.data$date)
-filled.data$day <- sapply(filled.data$date, FUN=weekday.or.weekend)
+filled.data$day <- sapply(filled.data$date, FUN=weekday_weekend)
 ```
 
 2. make a panel plot containing plots of average number of steps taken
