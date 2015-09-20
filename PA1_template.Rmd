@@ -3,6 +3,9 @@
 ## Loading and preprocessing the data
 ```{r loaddata}
 #setwd("../coursera/Reproducible_reserach")
+if(!file.exists('./data/activity.csv')){
+    unzip('./data/activity.zip')
+}
 data <- read.csv("./data/activity.csv")
 ```
 
